@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
+#include <Windows.h>
 
 #include "animation.h"
 #include "check_logic.h"
@@ -46,6 +47,7 @@ int random_stepsis(playground* my_playground) {
 }
 
 int main() {
+	SetConsoleOutputCP(CP_UTF8);
 
 	init_game();
 	
@@ -125,6 +127,7 @@ int main() {
 		}
 		else if(input_key == SNEAK_ESC) {
 			plot_startscreen(my_playground, esc_rant2);
+			fsleep(0.7);
 			break;
 		}
 		else {

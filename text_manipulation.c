@@ -100,6 +100,10 @@ int row_start(char* str, int row) {
 int actual_index(char* str, int index, int row) {
 	
 	int actual_index = row_start(str, row);
+
+	if (actual_index == -1) {
+		return actual_index;
+	}
 	
 	for(int i=0; i < index; i++) {
 		if(str[actual_index] == '\0' || str[actual_index] == '\n') {

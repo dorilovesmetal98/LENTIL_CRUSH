@@ -11,9 +11,17 @@
 #include "playground.h"
 #include "start_screen.h"
 
+#ifdef _WIN32
+#include <Windows.h>
+#endif
+
 float slow_down_factor = 1.0;
 
 void fsleep(float sec) {
+#ifdef _WIN32
+	// Sleep on Windows takes Milliseconds
+	Sleep(sec * 1e3);
+#else
 	struct timespec req;
 	struct timespec rem;
 	
@@ -24,6 +32,7 @@ void fsleep(float sec) {
 	req.tv_nsec = nanosec;
 	
 	nanosleep(&req, &rem);
+#endif
 }
 
 void slowdown_sleep(float sec) {

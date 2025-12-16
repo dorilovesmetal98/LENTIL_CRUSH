@@ -3,6 +3,7 @@
 #include "playground.h"
 #include "start_screen.h"
 #include "text_manipulation.h"
+#include "drawings.h"
 
 char* render_startscreen(char* message) {
 	int key_color = 0;

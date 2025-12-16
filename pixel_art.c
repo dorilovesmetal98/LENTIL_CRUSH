@@ -3,8 +3,6 @@
 #include "playground.h"
 #include "text_manipulation.h"
 #include "drawings.h"
-#include <stdio.h>
-#include <unistd.h>
 
 
 char* prepare_scetch(char* input_str) {
@@ -30,7 +28,8 @@ char* prepare_scetch(char* input_str) {
 	if(max_line_len % 2 == 0) {
 		max_line_len++;
 	}
-	char* prepared_str = malloc(lines * (max_line_len+1) + 3);
+	char* prepared_str = malloc(lines * (max_line_len+1) + 4);
+	memset(prepared_str, 0, lines * (max_line_len + 1) + 4);
 	
 	// copy to new array
 	int input_str_count = 0;
@@ -84,6 +83,7 @@ char* render_pixel_art(char* input_str) {
 	// allocate output string
 	// (4 old chars are 1 new text) , text can be 3 chars
 	char* output_str = malloc((lines * line_len /4 * 3) + lines);
+	memset(output_str, 0, (lines * line_len / 4 * 3) + lines);
 	int output_str_count = 0;
 	
 	int line1count = 0;

@@ -2,13 +2,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <termios.h>
-#include <unistd.h>
 
 #include "drawings.h"
 #include "pixel_art.h"
 #include "playground.h"
 #include "start_screen.h"
+
+#ifndef _WIN32
+#include <termios.h>
+#include <unistd.h>
+#endif
 
 void plot_startscreen(playground* my_playground, char* message) {
 	// ### RENDERING ###
@@ -23,7 +26,11 @@ void plot_startscreen(playground* my_playground, char* message) {
 	
 	// ### PRINT ###
 	// clear terminal
+#ifdef _WIN32
+	system("cls");
+#else
 	system("clear");
+#endif
 	// top newline
 	printf("\n");
 	// header
@@ -54,7 +61,11 @@ void plot_game(playground* my_playground) {
 	
 	// ### PRINT ###
 	// clear terminal
+#ifdef _WIN32
+	system("cls");
+#else
 	system("clear");
+#endif
 	// top newline
 	printf("\n");
 	// header
@@ -71,6 +82,60 @@ void plot_game(playground* my_playground) {
 	free(playground_str);
 }
 
+#ifdef _WIN32
+char keyboard_input(void) {
+	int key1, key2;
+	char input;
+
+	while (1) {
+		if (kbhit()) {
+			key1 = getch();
+			break;
+		}
+	}
+
+	if (key1 == 13) {
+		input = ENTER;
+	}
+	else if (key1 == 'x') {
+		input = SNEAK_ESC;
+	}
+	else if (key1 == 'y' || key1 == 'Y') {
+		input = 'y';
+	}
+	else if (key1 == 'n' || key1 == 'N') {
+		input = 'n';
+	}
+	else if (key1 == 27) {
+		input = ESC;
+	}
+	else if (key1 == 224) {
+		key2 = getch();
+		switch (key2) {
+		case 72:	// up
+			input = UP;
+			break;
+		case 77:	// right
+			input = RIGHT;
+			break;
+		case 75:	// left
+			input = LEFT;
+			break;
+		case 80:	// down
+			input = DOWN;
+			break;
+		}
+	}
+	else {
+		input = 0;
+	}
+
+	fflush(stdin);
+
+	return input;
+}
+
+#else
 static struct termios new_io;
 static struct termios old_io;
 static int raw () {
@@ -92,8 +157,6 @@ static int raw () {
 void reset() {
   tcsetattr (STDIN_FILENO, TCSANOW, &old_io);
 }
-
-
 
 char keyboard_input(void) {
 	char keys[3];
@@ -146,3 +209,4 @@ char keyboard_input(void) {
 	
 	return input;
 }
+#endif
