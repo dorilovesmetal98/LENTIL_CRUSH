@@ -8,7 +8,9 @@
 #include "playground.h"
 #include "start_screen.h"
 
-#ifndef _WIN32
+#ifdef _WIN32
+#include <conio.h>
+#else
 #include <termios.h>
 #include <unistd.h>
 #endif
