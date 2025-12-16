@@ -18,10 +18,10 @@
 float slow_down_factor = 1.0;
 
 void fsleep(float sec) {
-#ifdef _WIN32
+	#ifdef _WIN32
 	// Sleep on Windows takes Milliseconds
 	Sleep(sec * 1e3);
-#else
+	#else
 	struct timespec req;
 	struct timespec rem;
 	
@@ -32,7 +32,7 @@ void fsleep(float sec) {
 	req.tv_nsec = nanosec;
 	
 	nanosleep(&req, &rem);
-#endif
+	#endif
 }
 
 void slowdown_sleep(float sec) {

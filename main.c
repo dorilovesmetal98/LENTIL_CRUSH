@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <time.h>
-#include <Windows.h>
 
 #include "animation.h"
 #include "check_logic.h"
@@ -9,6 +8,10 @@
 #include "IO.h"
 #include "playground.h"
 #include "start_screen.h"
+
+#ifdef _WIN32
+#include <Windows.h>
+#endif
 
 void random_pigeons(playground* my_playground) {
 	srand(time(NULL));
@@ -47,7 +50,9 @@ int random_stepsis(playground* my_playground) {
 }
 
 int main() {
+	#ifdef _WIN32
 	SetConsoleOutputCP(CP_UTF8);
+	#endif
 
 	init_game();
 	

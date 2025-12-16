@@ -28,11 +28,11 @@ void plot_startscreen(playground* my_playground, char* message) {
 	
 	// ### PRINT ###
 	// clear terminal
-#ifdef _WIN32
+	#ifdef _WIN32
 	system("cls");
-#else
+	#else
 	system("clear");
-#endif
+	#endif
 	// top newline
 	printf("\n");
 	// header
@@ -63,11 +63,11 @@ void plot_game(playground* my_playground) {
 	
 	// ### PRINT ###
 	// clear terminal
-#ifdef _WIN32
+	#ifdef _WIN32
 	system("cls");
-#else
+	#else
 	system("clear");
-#endif
+	#endif
 	// top newline
 	printf("\n");
 	// header
