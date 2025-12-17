@@ -15,6 +15,17 @@
 #include <unistd.h>
 #endif
 
+int printed = 0;
+
+void clear_screen(void) {
+	if(printed > 0) {
+		char* clear_str = malloc(printed);
+		memset(clear_str, '\b', printed);
+		printf(clear_str);
+		printed = 0;
+	}
+}
+
 void plot_startscreen(playground* my_playground, char* message) {
 	// ### RENDERING ###
 	// render header text
@@ -28,19 +39,22 @@ void plot_startscreen(playground* my_playground, char* message) {
 	
 	// ### PRINT ###
 	// clear terminal
+	/*
 	#ifdef _WIN32
 	system("cls");
 	#else
 	system("clear");
 	#endif
+	*/
+	clear_screen();
 	// top newline
-	printf("\n");
+	printed += printf("\n");
 	// header
-	printf(full_header_str);
+	printed += printf(full_header_str);
 	// start screen
-	printf(startscreen_str);
+	printed += printf(startscreen_str);
 	// bottom newline
-	printf("\n");
+	printed += printf("\n");
 	
 	// ### FREE ###
 	free(header_str);
@@ -63,19 +77,22 @@ void plot_game(playground* my_playground) {
 	
 	// ### PRINT ###
 	// clear terminal
+	/*
 	#ifdef _WIN32
 	system("cls");
 	#else
 	system("clear");
 	#endif
+	*/
+	clear_screen();
 	// top newline
-	printf("\n");
+	printed += printf("\n");
 	// header
-	printf(full_header_str);
+	printed += printf(full_header_str);
 	// playground
-	printf(playground_str);
+	printed += printf(playground_str);
 	// bottom newline
-	printf("\n");
+	printed += printf("\n");
 	
 	// ### FREE ###
 	free(header_str);
