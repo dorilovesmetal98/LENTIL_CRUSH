@@ -248,6 +248,8 @@ char* full_header(char* color_header_str, playground* my_playground) {
 	char* output_str = malloc(2*(strlen(left_pigeon_str)+strlen(right_pigeon_str)+strlen(color_header_str)));
 	int output_str_count = 0;
 	
+	add_linebreak(output_str, &output_str_count);
+	
 	int index = 0;
 	int row = 0;
 	while(1) {

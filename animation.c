@@ -75,7 +75,7 @@ void startscreen_animated(playground* my_playground) {
 		temp_str[i] = intro[i];
 		if(intro[i] != ' ' && intro[i] != '\n' && intro[i] != '|') {
 			plot_startscreen(my_playground, temp_str);
-			fsleep(0.01);
+			fsleep(0.008);
 		}
 	}
 	free(temp_str);

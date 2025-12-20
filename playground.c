@@ -166,13 +166,15 @@ char* render_playground(playground* my_playground) {
 	// render sidebar
 	char* sidebar_str = render_sidebar(my_playground->my_sidebar);
 	
-	// allocate                      
-	char* output_str = malloc(SPACE_VER + SPACE_HOR*ROWS + (ROWS*(WIDTH_VER*3+1)+2) * (COLUMNS*(WIDTH_HOR*3+1) + 1) + 6*2*COLUMNS*ROWS + strlen(sidebar_str));
+	// allocate
+	// (vertical= table content + top line & middle lines + bottom line + message + empty line + keys)
+	int vertical = ROWS*WIDTH_VER*3 + ROWS + 1 + 1 + 1 + 3;
+	char* output_str = malloc(vertical * (ROW_SIZE + 10));
 	int output_str_count = 0;
 	
 	// TOP SPACE
 	for(int s=0; s < SPACE_VER; s++) {
-		add_text("\n", output_str, &output_str_count);
+		add_linebreak(output_str, &output_str_count);
 	}
 	
 	// BUILD PLAYGROUND - ATTACH SIDEBAR LINE BEFORE EACH NEWLINE
@@ -194,8 +196,8 @@ char* render_playground(playground* my_playground) {
 	add_text(CORNER_TOP_RIGHT, output_str, &output_str_count);
 	attach_sidebar_line(total_row_count, output_str, &output_str_count, sidebar_str);
 	total_row_count++;
-	add_text("\n", output_str, &output_str_count);
-	
+	add_linebreak(output_str, &output_str_count);
+
 	// CELLS
 	// i = matrix row index, j = matrix column index
 	// p = relative row index inside a cell, q = relative column index inside a cell
@@ -263,7 +265,7 @@ char* render_playground(playground* my_playground) {
 			add_text(VERTICAL_LINE, output_str, &output_str_count);
 			attach_sidebar_line(total_row_count, output_str, &output_str_count, sidebar_str);
 			total_row_count++;
-			add_text("\n", output_str, &output_str_count);
+			add_linebreak(output_str, &output_str_count);
 		}
 		if(i < ROWS-1) {
 			// middle borders
@@ -283,7 +285,7 @@ char* render_playground(playground* my_playground) {
 			add_text(RIGHT_T, output_str, &output_str_count);
 			attach_sidebar_line(total_row_count, output_str, &output_str_count, sidebar_str);
 			total_row_count++;
-			add_text("\n", output_str, &output_str_count);
+			add_linebreak(output_str, &output_str_count);
 		}
 	}
 	// BOTTOM BORDER
@@ -303,14 +305,15 @@ char* render_playground(playground* my_playground) {
 	add_text(CORNER_BOTTOM_RIGHT, output_str, &output_str_count);
 	attach_sidebar_line(total_row_count, output_str, &output_str_count, sidebar_str);
 	total_row_count++;
-	add_text("\n", output_str, &output_str_count);
+	add_linebreak(output_str, &output_str_count);
 	
 	// bottom message
 	for(int s=0; s < SPACE_HOR; s++) {
 		add_text(" ", output_str, &output_str_count);
 	}
 	add_text(my_playground->bottom_message, output_str, &output_str_count);
-	add_text("\n\n", output_str, &output_str_count);
+	add_linebreak(output_str, &output_str_count);
+	add_linebreak(output_str, &output_str_count);
 	
 	// BOTTOM KEYS INFO
 	for(int s=0; s < SPACE_HOR; s++) {
@@ -322,7 +325,7 @@ char* render_playground(playground* my_playground) {
 	add_text(ARROW_UP, output_str, &output_str_count);
 	add_text(" ", output_str, &output_str_count);
 	set_color(CLEAR, output_str, &output_str_count);
-	add_text("\n", output_str, &output_str_count);
+	add_linebreak(output_str, &output_str_count);
 	
 	for(int s=0; s < SPACE_HOR; s++) {
 		add_text(" ", output_str, &output_str_count);
@@ -349,7 +352,8 @@ char* render_playground(playground* my_playground) {
 	set_color(KEY, output_str, &output_str_count);
 	add_text(" ESC ", output_str, &output_str_count);
 	set_color(CLEAR, output_str, &output_str_count);
-	add_text(" Spiel beenden\n", output_str, &output_str_count);
+	add_text(" Spiel beenden", output_str, &output_str_count);
+	add_linebreak(output_str, &output_str_count);
 	
 	for(int s=0; s < SPACE_HOR; s++) {
 		add_text(" ", output_str, &output_str_count);

@@ -51,7 +51,7 @@ char* render_startscreen(char* message) {
 			}
 			else {
 				add_char(message[text_count], output_str, &output_str_count);
-				if(!(!strncmp(&message[text_count], "ä", 2) || !strncmp(&message[text_count], "Ä", 2) || !strncmp(&message[text_count], "ö", 2) || !strncmp(&message[text_count], "Ö", 2) || !strncmp(&message[text_count], "ü", 2) || !strncmp(&message[text_count], "Ü", 2) || !strncmp(&message[text_count], "ß", 2))) {
+				if(!(!strncmp(&message[text_count], "ä", 2) || !strncmp(&message[text_count], "Ä", 2) || !strncmp(&message[text_count], "ö", 2) || !strncmp(&message[text_count], "Ö", 2) || !strncmp(&message[text_count], "ü", 2) || !strncmp(&message[text_count], "Ü", 2) || !strncmp(&message[text_count], "ß", 2) || !strncmp(&message[text_count], "»", 2) || !strncmp(&message[text_count], "«", 2))) {
 					text_row_index++;
 				}
 			}

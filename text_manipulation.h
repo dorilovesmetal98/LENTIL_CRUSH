@@ -43,6 +43,7 @@
 
 void add_text(char* symbol, char* str, int* str_count);
 void add_char(char symbol, char* str, int* str_count);
+void add_linebreak(char* str, int* str_count);
 void copy_unicode(char* symbol, char* str, int* str_count);
 void set_color(int value, char* str, int* str_count);
 int row_start(char* str, int row);

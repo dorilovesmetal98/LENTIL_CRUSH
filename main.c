@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <conio.h>
 #include <time.h>
 
 #include "animation.h"
@@ -11,10 +10,6 @@
 #include "IO.h"
 #include "playground.h"
 #include "start_screen.h"
-
-#ifdef _WIN32
-#include <Windows.h>
-#endif
 
 void random_pigeons(playground* my_playground) {
 	srand(time(NULL));
@@ -53,27 +48,11 @@ int random_stepsis(playground* my_playground) {
 }
 
 int main() {
-	#ifdef _WIN32
-	SetConsoleOutputCP(CP_UTF8);
-	#endif
-
-	#ifdef _WIN32
-	//system("cls");
-	#else
-	system("clear");
-	#endif
+	init_screen();
 	init_game();
 
 	playground* my_playground = get_playground();
 	match* temp_match = get_temp_match();
-	/*
-	plot_startscreen(my_playground, intro);
-	fsleep(5);
-	printf("\x1B[H");
-	plot_game(my_playground);
-	fsleep(20);
-	return 0;
-	*/
 	char input_key;
 
 	startscreen_animated(my_playground);
@@ -89,6 +68,9 @@ int main() {
 	}
 	else {
 		plot_startscreen(my_playground, esc_rant2);
+		fsleep(0.6);
+		clear_game();
+		clear_screen();
 		return 0;
 	}
 
@@ -147,7 +129,7 @@ int main() {
 		}
 		else if(input_key == SNEAK_ESC) {
 			plot_startscreen(my_playground, esc_rant2);
-			fsleep(0.7);
+			fsleep(0.6);
 			break;
 		}
 		else {
@@ -157,6 +139,7 @@ int main() {
 	}
 
 	clear_game();
+	clear_screen();
 
 	return 0;
 }

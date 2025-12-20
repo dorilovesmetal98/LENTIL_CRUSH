@@ -4,6 +4,8 @@
 #define ROWS 6
 #define COLUMNS 6
 
+#define ROW_SIZE 102
+
 #define WIDTH_HOR 11
 #define WIDTH_VER 5
 

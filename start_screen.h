@@ -12,12 +12,13 @@ static char intro[] = "Im Schloss des Königs findet heute ein Fest statt, das 3
 					  "aussuchen möchte.\n"
 			   		  "Du möchtest unbedingt auch dahin und bist schon ganz aufgeregt.\n\n"
 				      "Deine böse Stiefmutter hat aber Pläne mit dir.\n\n"
-			          "Da habe ich dir eine Schüssel Linsen in die Asche geschüttet, wenn du die\nLinsen in zwei Stunden wieder ausgelesen hast, so sollst du mitgehen.\n\n"
+			          "»Da habe ich dir eine Schüssel Linsen in die Asche geschüttet, wenn du die\nLinsen in zwei Stunden wieder ausgelesen hast, so sollst du mitgehen.«\n\n"
 			          "Also: sortiere die Linsen!\n"
 					  "Tausche Linsen, um mindestens 3 in eine Reihe zu bringen.\n"
 					  "Wenn du alle Punkte erreicht hast, darfst du mit zum Fest des Königs.\n\n\n"
 			          "                               ARE YOU READY?\n\n"
 					  "                | Y |  YES         | N |  NO         | ESC | Spiel beenden\n";
+	
 			
 static char intro_count[] = "\n\n\n\n\n\n\n\n\n"
 							"                               SPIEL STARTET IN ";;

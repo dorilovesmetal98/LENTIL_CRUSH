@@ -16,6 +16,21 @@
 #endif
 
 void clear_screen(void) {
+	#ifdef _WIN32
+	system("cls");
+	#else
+	system("clear");
+	#endif
+}
+
+void init_screen(void) {
+	#ifdef _WIN32
+	SetConsoleOutputCP(CP_UTF8);
+	#endif
+	clear_screen();
+}
+
+void jump2top(void) {
 	printf("\x1B[1;1f\x1B[3J");
 }
 
@@ -31,22 +46,11 @@ void plot_startscreen(playground* my_playground, char* message) {
 	char* startscreen_str = render_startscreen(message);
 	
 	// ### PRINT ###
-	// clear terminal
-	#ifdef _WIN32
-	//system("cls");
-	#else
-	//system("clear");
-	#endif
-	clear_screen();
-	
-	// top newline
-	printf("                                                                                                          \n");
+	jump2top();
 	// header
 	printf(full_header_str);
 	// start screen
 	printf(startscreen_str);
-	// bottom newline
-	//printf("                                                                                                          \n");
 	
 	// ### FREE ###
 	free(header_str);
@@ -68,21 +72,11 @@ void plot_game(playground* my_playground) {
 	char* playground_str = render_playground(my_playground);
 	
 	// ### PRINT ###
-	// clear terminal
-	#ifdef _WIN32
-	//system("cls");
-	#else
-	//system("clear");
-	#endif
-	clear_screen();
-	// top newline
-	printf("                                                                                                          \n");
+	jump2top();
 	// header
 	printf(full_header_str);
 	// playground
 	printf(playground_str);
-	// bottom newline
-	//printf("                                                                                                          \n");
 	
 	// ### FREE ###
 	free(header_str);
