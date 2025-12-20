@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdio.h>
 
 #include "animation.h"
 #include "check_logic.h"
@@ -24,13 +25,13 @@ void fsleep(float sec) {
 	#else
 	struct timespec req;
 	struct timespec rem;
-	
+
 	time_t sec_int = (time_t) sec;
 	long nanosec = (long) (sec*1e9) - (sec_int*1e9);
-	
+
 	req.tv_sec = sec_int;
 	req.tv_nsec = nanosec;
-	
+
 	nanosleep(&req, &rem);
 	#endif
 }
@@ -167,7 +168,7 @@ void fill_animated_all(playground* my_playground) {
 	plot_game(my_playground);
 	slowdown_sleep(0.2);
 	srand(time(NULL));
-	
+
 	for(int i=0; i < ROWS; i++) {
 		for(int j=0; j < COLUMNS; j++) {
 			fill_one(my_playground, i, j);

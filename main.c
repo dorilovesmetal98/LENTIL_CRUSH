@@ -1,4 +1,7 @@
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <conio.h>
 #include <time.h>
 
 #include "animation.h"
@@ -25,14 +28,14 @@ void random_pigeons(playground* my_playground) {
 	else if(random_bool_percent(30)) {
 		left_pigeon_fly_on_field();
 	}
-	
+
 	if(right_pigeon_onfield(my_playground) && random_bool_percent(30)) {
 		right_pigeon_fly_off_field();
 		fill_animated(my_playground, 0);
 	}
 	else if(random_bool_percent(30)) {
 		right_pigeon_fly_on_field();
-	}	
+	}
 }
 
 int random_stepsis(playground* my_playground) {
@@ -53,25 +56,31 @@ int main() {
 	#ifdef _WIN32
 	SetConsoleOutputCP(CP_UTF8);
 	#endif
-	
+
 	#ifdef _WIN32
-	system("cls");
+	//system("cls");
 	#else
 	system("clear");
 	#endif
-
 	init_game();
-	
+
 	playground* my_playground = get_playground();
 	match* temp_match = get_temp_match();
-	
+	/*
+	plot_startscreen(my_playground, intro);
+	fsleep(5);
+	printf("\x1B[H");
+	plot_game(my_playground);
+	fsleep(20);
+	return 0;
+	*/
 	char input_key;
-	
+
 	startscreen_animated(my_playground);
 	do {
 		input_key = keyboard_input();
 	} while(!(input_key == 'y' || input_key == 'n' || input_key == ESC || input_key == SNEAK_ESC));
-	
+
 	if(input_key == 'y') {
 		startscreen_count_animated(my_playground);
 	}
@@ -82,19 +91,19 @@ int main() {
 		plot_startscreen(my_playground, esc_rant2);
 		return 0;
 	}
-	
+
 	fill_animated_all(my_playground);
-	
+
 	activate_cursor1();
 	set_bottom_message("LETS GO!");
 	plot_game(my_playground);
-	
+
 	int matching;
 	while(1) {
 		do {
 			input_key = keyboard_input();
 		} while(!(input_key == ENTER || input_key == UP || input_key == DOWN || input_key == LEFT || input_key == RIGHT || input_key == ESC || input_key == SNEAK_ESC));
-		
+
 		if(input_key == ENTER) {
 			if(enter_cursor()) {
 				clear_bottom_message();
@@ -107,14 +116,14 @@ int main() {
 				slowdown_sleep(0.3);
 				deactivate_cursor();
 				activate_cursor1();
-				
+
 				random_pigeons(my_playground);
 				plot_game(my_playground);
-				
+
 				if(random_stepsis(my_playground)) {
 					continue;
 				}
-				
+
 				matching = detect_match(temp_match, my_playground);
 				while(matching) {
 					set_blink_match();
@@ -146,8 +155,8 @@ int main() {
 		}
 		plot_game(my_playground);
 	}
-	
+
 	clear_game();
-		
+
 	return 0;
 }

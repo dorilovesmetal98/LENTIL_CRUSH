@@ -15,15 +15,8 @@
 #include <unistd.h>
 #endif
 
-int printed = 0;
-
 void clear_screen(void) {
-	if(printed > 0) {
-		char* clear_str = malloc(printed);
-		memset(clear_str, '\b', printed);
-		printf(clear_str);
-		printed = 0;
-	}
+	printf("\x1B[1;1f\x1B[3J");
 }
 
 void plot_startscreen(playground* my_playground, char* message) {
@@ -39,22 +32,21 @@ void plot_startscreen(playground* my_playground, char* message) {
 	
 	// ### PRINT ###
 	// clear terminal
-	/*
 	#ifdef _WIN32
-	system("cls");
+	//system("cls");
 	#else
-	system("clear");
+	//system("clear");
 	#endif
-	*/
 	clear_screen();
+	
 	// top newline
-	printed += printf("\n");
+	printf("                                                                                                          \n");
 	// header
-	printed += printf(full_header_str);
+	printf(full_header_str);
 	// start screen
-	printed += printf(startscreen_str);
+	printf(startscreen_str);
 	// bottom newline
-	printed += printf("\n");
+	//printf("                                                                                                          \n");
 	
 	// ### FREE ###
 	free(header_str);
@@ -77,22 +69,20 @@ void plot_game(playground* my_playground) {
 	
 	// ### PRINT ###
 	// clear terminal
-	/*
 	#ifdef _WIN32
-	system("cls");
+	//system("cls");
 	#else
-	system("clear");
+	//system("clear");
 	#endif
-	*/
 	clear_screen();
 	// top newline
-	printed += printf("\n");
+	printf("                                                                                                          \n");
 	// header
-	printed += printf(full_header_str);
+	printf(full_header_str);
 	// playground
-	printed += printf(playground_str);
+	printf(playground_str);
 	// bottom newline
-	printed += printf("\n");
+	//printf("                                                                                                          \n");
 	
 	// ### FREE ###
 	free(header_str);
