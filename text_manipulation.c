@@ -1,6 +1,4 @@
 #include <string.h>
-#include <unistd.h>
-#include <stdio.h>
 #include "playground.h"
 #include "colors.h"
 
@@ -26,32 +24,36 @@ void add_linebreak(char* str, int* str_count) {
 	
 	unsigned char is_unicode = 0;
 	unsigned char is_color_seq = 0;
-	// find last linebreak
-	while(str[i] != '\n' && i > 0) {
-		i--;
+
+	if (i >= 0) {
+		// find last linebreak
+		while (str[i] != '\n' && i > 0) {
+			i--;
+		}
+		// count visible chars in line
+		for (i = i + 1; i < (*str_count) - 1; i++) {
+			if (is_unicode >= 2) {
+				is_unicode = 0;
+			}
+			else if (is_unicode == 1) {
+				is_unicode = 2;
+			}
+			else if (is_unicode == 0 && str[i] == '\xE2') {
+				is_unicode = 1;
+				chars_in_line++;
+			}
+			else if (is_color_seq == 1 && str[i] == 'm') {
+				is_color_seq = 0;
+			}
+			else if (is_color_seq == 0 && str[i] == 27) {
+				is_color_seq = 1;
+			}
+			else if (is_color_seq == 0) {
+				chars_in_line++;
+			}
+		}
 	}
-	// count visible chars in line
-	for(i=i+1; i < (*str_count)-1; i++) {
-		if(is_unicode >= 2) {
-			is_unicode = 0;
-		}
-		else if(is_unicode == 1) {
-			is_unicode = 2;
-		}
-		else if(is_unicode == 0 && str[i] == '\xE2') {
-			is_unicode = 1;
-			chars_in_line++;
-		}
-		else if(is_color_seq == 1 && str[i] == 'm') {
-			is_color_seq = 0;
-		}
-		else if(is_color_seq == 0 && str[i] == 27) {
-			is_color_seq = 1;
-		}
-		else if(is_color_seq == 0) {
-			chars_in_line++;
-		}
-	}
+	
 
 	// fill blanks
 	for(i=0; i < ROW_SIZE-chars_in_line; i++) {

@@ -9,10 +9,11 @@ char* render_startscreen(char* message) {
 	int key_color = 0;
 	
 	// allocate                      
-	char* output_str = malloc((WIDTH_STARTSCREEN_HOR+SPACE)*WIDTH_STARTSCREEN_VER + 800);
+	char* output_str = malloc((WIDTH_STARTSCREEN_HOR+SPACE)*(WIDTH_STARTSCREEN_VER+1) + 800);
 	int output_str_count = 0;
 
-	add_text("\n\n", output_str, &output_str_count);
+	//add_text("\n", output_str, &output_str_count);
+	add_linebreak(output_str, &output_str_count);
 	
 	// top border
 	for(int s=0; s < SPACE; s++) {

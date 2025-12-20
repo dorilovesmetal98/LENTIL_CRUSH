@@ -294,11 +294,12 @@ char* full_header(char* color_header_str, playground* my_playground) {
 			}
 		}
 		
-		if(right_pigeon_str[index+1] == '\0') {
+		add_linebreak(output_str, &output_str_count);
+
+		if (right_pigeon_str[index + 1] == '\0') {
 			break;
 		}
-		
-		add_char('\n', output_str, &output_str_count);
+
 		row++;
 	}
 	add_char('\0', output_str, &output_str_count);

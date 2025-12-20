@@ -10,7 +10,7 @@
 #define WIDTH_VER 5
 
 #define SPACE_HOR 14
-#define SPACE_VER 1
+#define SPACE_VER 0
 #define SPACE_SIDEBAR_HOR 8
 #define SPACE_SIDEBAR_VER 4
 
