@@ -55,18 +55,7 @@ int main() {
 	match* temp_match = get_temp_match();
 	char input_key;
 
-	struct timespec start, end;
-	double t1, t2;
-
-	timespec_get(&start, TIME_UTC);
-	t1 = (double) start.tv_sec + (double) start.tv_nsec*1e-9;
-
 	startscreen_animated(my_playground);
-
-	timespec_get(&end, TIME_UTC);
-	t2 = (double) end.tv_sec + (double) end.tv_nsec*1e-9;
-	double diff = t2 - t1;
-	printf("Time for startscreen: %lf\n", diff);
 
 	do {
 		input_key = keyboard_input();

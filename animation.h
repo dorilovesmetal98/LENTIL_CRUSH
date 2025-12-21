@@ -6,6 +6,10 @@
 
 #define SLOW_DOWN_INCREMENT 0.2
 
+#ifdef _WIN32
+#define WINDOWS_ACC_FACTOR 0.8
+#endif
+
 void fsleep(float sec);
 void slow_down(void);
 void slowdown_sleep(float sec);

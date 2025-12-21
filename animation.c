@@ -20,8 +20,11 @@ float slow_down_factor = 1.0;
 
 void fsleep(float sec) {
 	#ifdef _WIN32
-	// Sleep on Windows takes Milliseconds
-	Sleep(sec * 1e3);
+	float millisec = sec * 1e3;
+	if (millisec < 1 && millisec != 0) {
+		millisec = 1;
+	}
+	Sleep(millisec);
 	#else
 	struct timespec req;
 	struct timespec rem;
@@ -43,6 +46,9 @@ void slowdown_sleep(float sec) {
 	else {
 		sec = sec * slow_down_factor;
 	}
+	#ifdef _WIN32
+	sec = sec * WINDOWS_ACC_FACTOR;
+	#endif 
 	fsleep(sec);
 }
 
