@@ -108,7 +108,7 @@ char keyboard_input(void) {
 	if (key1 == 13) {
 		input = ENTER;
 	}
-	else if (key1 == 'x') {
+	else if (key1 == '+') {
 		input = SNEAK_ESC;
 	}
 	else if (key1 == 'y' || key1 == 'Y') {
@@ -181,7 +181,7 @@ char keyboard_input(void) {
 	if(keys[0] == 13) {
 		input = ENTER;
 	}
-	else if(keys[0] == 'x') {
+	else if(keys[0] == '+') {
 		input = SNEAK_ESC;
 	}
 	else if(keys[0] == 'y' || keys[0] == 'Y') {
