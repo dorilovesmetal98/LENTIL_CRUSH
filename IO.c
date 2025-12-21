@@ -31,8 +31,14 @@ void init_screen(void) {
 }
 
 void jump2top(void) {
-	printf("\x1B[1;1f\x1B[3J");
+	printf("\x1B[1;1f");
 }
+
+void overwrite_screen(void) {
+	jump2top();
+	printf("\x1B[3J");
+}
+
 
 void plot_startscreen(playground* my_playground, char* message) {
 	// ### RENDERING ###
@@ -46,11 +52,12 @@ void plot_startscreen(playground* my_playground, char* message) {
 	char* startscreen_str = render_startscreen(message);
 	
 	// ### PRINT ###
-	jump2top();
+	overwrite_screen();
 	// header
 	printf(full_header_str);
 	// start screen
 	printf(startscreen_str);
+	jump2top();
 	
 	// ### FREE ###
 	free(header_str);
@@ -72,11 +79,12 @@ void plot_game(playground* my_playground) {
 	char* playground_str = render_playground(my_playground);
 	
 	// ### PRINT ###
-	jump2top();
+	overwrite_screen();
 	// header
 	printf(full_header_str);
 	// playground
 	printf(playground_str);
+	jump2top();
 	
 	// ### FREE ###
 	free(header_str);
