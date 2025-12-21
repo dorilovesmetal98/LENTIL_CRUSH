@@ -55,7 +55,19 @@ int main() {
 	match* temp_match = get_temp_match();
 	char input_key;
 
+	struct timespec res;
+	long long nano1, nano2;
+
+	timespec_get(&res, TIME_UTC);
+	nano1 = res.tv_sec * 1e9 + res.tv_nsec;
+
 	startscreen_animated(my_playground);
+
+	timespec_get(&res, TIME_UTC);
+	nano2 = res.tv_sec * 1e9 + res.tv_nsec;
+	long diff = nano2 - nano1;
+	printf("Time for startscreen: %lu\n", diff);
+
 	do {
 		input_key = keyboard_input();
 	} while(!(input_key == 'y' || input_key == 'n' || input_key == ESC || input_key == SNEAK_ESC));

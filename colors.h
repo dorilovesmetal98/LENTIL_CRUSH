@@ -11,7 +11,7 @@
 #define GRY    "\x1B[90m"
 #define BRD    "\x1B[91m"
 #define YEL    "\x1B[93m"
-#define WHT_BG "\x1B[47m"
+#define VIO_BG "\x1B[105m"
 #define CYN_BG "\x1B[106m"
 #define GRY_BG "\x1B[100m"
 #define RESET  "\x1B[0m"

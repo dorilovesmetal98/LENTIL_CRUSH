@@ -85,7 +85,7 @@ void set_color(field_color value, char* str, int* str_count) {
 			add_text(BRD, str, str_count);
 			break;
 		case CURSOR_CHOICE:
-			add_text(WHT_BG, str, str_count);
+			add_text(VIO_BG, str, str_count);
 			break;
 		case CURSOR_LOCKED:
 			add_text(CYN_BG, str, str_count);
