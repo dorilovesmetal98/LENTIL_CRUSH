@@ -56,6 +56,10 @@ void slow_down(void) {
 	slow_down_factor = slow_down_factor + SLOW_DOWN_INCREMENT;
 }
 
+void massive_slow_down(void) {
+	slow_down_factor = slow_down_factor + MASSIVE_SLOW_DOWN_INCREMENT;
+}
+
 void escscreen_animated(playground* my_playground) {
 	char* temp_str = malloc(strlen(esc_rant)+2);
 	memset(temp_str, 0, strlen(esc_rant)+2);

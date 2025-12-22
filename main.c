@@ -126,7 +126,7 @@ int main() {
 		}
 		else if(input_key == ESC) {
 			escscreen_animated(my_playground);
-			slow_down();
+			massive_slow_down();
 		}
 		else if(input_key == SNEAK_ESC) {
 			plot_startscreen(my_playground, esc_rant2);

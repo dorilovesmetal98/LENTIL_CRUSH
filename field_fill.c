@@ -28,9 +28,17 @@ void fill_horizontal_left(playground* my_playground, int last_index) {
 		move_col--;
 	}
 	
-	// fill if border
+	// fill if border or pigeons on border
 	if(move_col < 0) {
-		my_playground->matrix[row][0] = random_lentil();
+		if ((my_playground->matrix[row][0] == LEFT_PIGEON || my_playground->matrix[row][0] == RIGHT_PIGEON) && (my_playground->matrix[row][1] == LEFT_PIGEON || my_playground->matrix[row][1] == RIGHT_PIGEON)) {
+			my_playground->matrix[row][2] = random_lentil();
+		}
+		else if (my_playground->matrix[row][0] == LEFT_PIGEON || my_playground->matrix[row][0] == RIGHT_PIGEON) {
+			my_playground->matrix[row][1] = random_lentil();
+		}
+		else {
+			my_playground->matrix[row][0] = random_lentil();
+		}
 	}
 	// move one to right (skip pigeons)
 	else if((my_playground->matrix[row][move_col+1] == LEFT_PIGEON || my_playground->matrix[row][move_col+1] == RIGHT_PIGEON) && (my_playground->matrix[row][move_col+2] == LEFT_PIGEON || my_playground->matrix[row][move_col+2] == RIGHT_PIGEON)) {
@@ -60,7 +68,15 @@ void fill_horizontal_right(playground* my_playground, int first_index) {
 	
 	// fill if border
 	if(move_col >= COLUMNS) {
-		my_playground->matrix[row][COLUMNS-1] = random_lentil();
+		if ((my_playground->matrix[row][COLUMNS-1] == LEFT_PIGEON || my_playground->matrix[row][COLUMNS - 1] == RIGHT_PIGEON) && (my_playground->matrix[row][COLUMNS-2] == LEFT_PIGEON || my_playground->matrix[row][COLUMNS-2] == RIGHT_PIGEON)) {
+			my_playground->matrix[row][COLUMNS-3] = random_lentil();
+		}
+		else if (my_playground->matrix[row][COLUMNS-1] == LEFT_PIGEON || my_playground->matrix[row][COLUMNS-1] == RIGHT_PIGEON) {
+			my_playground->matrix[row][COLUMNS-2] = random_lentil();
+		}
+		else {
+			my_playground->matrix[row][COLUMNS-1] = random_lentil();
+		}
 	}
 	// move one to left (skip pigeons)
 	else if((my_playground->matrix[row][move_col-1] == LEFT_PIGEON || my_playground->matrix[row][move_col-1] == RIGHT_PIGEON) && (my_playground->matrix[row][move_col-2] == LEFT_PIGEON || my_playground->matrix[row][move_col-2] == RIGHT_PIGEON)) {
@@ -90,7 +106,15 @@ void fill_vertical_top(playground* my_playground, int last_index) {
 	
 	// fill if border
 	if(move_row < 0) {
-		my_playground->matrix[0][col] = random_lentil();
+		if ((my_playground->matrix[0][col] == LEFT_PIGEON || my_playground->matrix[0][col] == RIGHT_PIGEON) && (my_playground->matrix[1][col] == LEFT_PIGEON || my_playground->matrix[1][col] == RIGHT_PIGEON)) {
+			my_playground->matrix[2][col] = random_lentil();
+		}
+		else if (my_playground->matrix[0][col] == LEFT_PIGEON || my_playground->matrix[0][col] == RIGHT_PIGEON) {
+			my_playground->matrix[1][col] = random_lentil();
+		}
+		else {
+			my_playground->matrix[0][col] = random_lentil();
+		}
 	}
 	// move one down (skip pigeons)
 	else if((my_playground->matrix[move_row+1][col] == LEFT_PIGEON || my_playground->matrix[move_row+1][col] == RIGHT_PIGEON) && (my_playground->matrix[move_row+2][col] == LEFT_PIGEON || my_playground->matrix[move_row+2][col] == RIGHT_PIGEON)) {
@@ -120,7 +144,15 @@ void fill_vertical_bottom(playground* my_playground, int first_index) {
 	
 	// fill if border
 	if(move_row >= ROWS) {
-		my_playground->matrix[ROWS-1][col] = random_lentil();
+		if ((my_playground->matrix[ROWS-1][col] == LEFT_PIGEON || my_playground->matrix[ROWS-1][col] == RIGHT_PIGEON) && (my_playground->matrix[ROWS-2][col] == LEFT_PIGEON || my_playground->matrix[ROWS-2][col] == RIGHT_PIGEON)) {
+			my_playground->matrix[ROWS-3][col] = random_lentil();
+		}
+		else if (my_playground->matrix[ROWS-1][col] == LEFT_PIGEON || my_playground->matrix[ROWS-1][col] == RIGHT_PIGEON) {
+			my_playground->matrix[ROWS-2][col] = random_lentil();
+		}
+		else {
+			my_playground->matrix[ROWS-1][col] = random_lentil();
+		}
 	}
 	// move one down (skip pigeons)
 	else if((my_playground->matrix[move_row-1][col] == LEFT_PIGEON || my_playground->matrix[move_row-1][col] == RIGHT_PIGEON) && (my_playground->matrix[move_row-2][col] == LEFT_PIGEON || my_playground->matrix[move_row-2][col] == RIGHT_PIGEON)) {
