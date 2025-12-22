@@ -98,6 +98,8 @@ char keyboard_input(void) {
 	int key1, key2;
 	char input;
 
+	fflush(stdin);
+
 	while (1) {
 		if (kbhit()) {
 			key1 = getch();
@@ -173,6 +175,8 @@ char keyboard_input(void) {
 	char keys[3];
 	memset(keys, 0, 3);
 	char input;
+
+	fflush(stdin);
 	
 	raw();
 	
