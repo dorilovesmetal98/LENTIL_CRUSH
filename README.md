@@ -8,6 +8,8 @@ or
 
 # Build on Windows
 
-`nmake -f Makefile_Windows`
+`nmake /F Makefile_Windows`
 
 or  
+
+`cl -Iheader src/text_manipulation.c src/start_screen.c src/playground.c src/pixel_art.c src/main.c src/IO.c src/game_control.c src/field_fill.c src/animation.c src/check_logic.c /link /out:build/Lentil_Crush.exe`
