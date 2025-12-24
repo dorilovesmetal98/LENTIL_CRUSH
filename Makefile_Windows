@@ -1,0 +1,20 @@
+CC      = cl.exe
+RM	= del
+
+BUILDDIR = build
+SOURCEDIR = src
+HEADERDIR = header
+
+SOURCES = $(SOURCEDIR)/**.c
+
+NAME = Lentil_Crush.exe
+
+.PHONY: all clean
+
+all: $(NAME)
+
+$(NAME): $(SOURCES)
+	$(CC) $(CFLAGS) -I$(HEADERDIR) $(SOURCES) /link /out:$(BUILDDIR)/$(NAME)
+
+clean:
+    	$(RM) **.obj
