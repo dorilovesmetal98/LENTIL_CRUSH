@@ -27,6 +27,8 @@ void init_screen(void) {
 	#ifdef _WIN32
 	SetConsoleOutputCP(CP_UTF8);
 	SetConsoleTitle("Lentil Crush");
+	#else
+	printf("\033]0;%s\a", "Lentil Crush");
 	#endif
 	clear_screen();
 }
