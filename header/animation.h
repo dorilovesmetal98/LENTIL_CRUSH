@@ -8,7 +8,7 @@
 #define MASSIVE_SLOW_DOWN_INCREMENT 1.0
 
 #ifdef _WIN32
-#define WINDOWS_ACC_FACTOR 0.8
+#define WINDOWS_ACC_FACTOR 0.7
 #endif
 
 void fsleep(float sec);

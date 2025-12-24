@@ -54,6 +54,7 @@ int main() {
 	playground* my_playground = get_playground();
 	match* temp_match = get_temp_match();
 	char input_key;
+	int esc_count = 0;
 
 	startscreen_animated(my_playground);
 
@@ -124,11 +125,12 @@ int main() {
 				}
 			}
 		}
-		else if(input_key == ESC) {
+		else if(input_key == ESC && esc_count < 3) {
 			escscreen_animated(my_playground);
 			massive_slow_down();
+			esc_count++;
 		}
-		else if(input_key == SNEAK_ESC) {
+		else if(input_key == SNEAK_ESC || (input_key == ESC && esc_count >= 3)) {
 			plot_startscreen(my_playground, ESC_RANT2);
 			fsleep(0.6);
 			break;
