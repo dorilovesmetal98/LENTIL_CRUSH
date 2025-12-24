@@ -4,9 +4,9 @@
 #include "playground.h"
 #include "check_logic.h"
 
-field_color random_lentil(void) {
+int random_lentil(void) {
 	
-	field_color rand_field = (rand() % LENTILS_NUM) + 1;
+	int rand_field = (rand() % LENTILS_NUM) + 1;
 	
 	return rand_field;
 }
@@ -178,7 +178,7 @@ void empty_matrix(playground* my_playground) {
 }
 
 void fill_one(playground* my_playground, int row, int col) {
-	field_color current_field;
+	int current_field;
 	do {
 		current_field = random_lentil();
 	} while(!check_neighbors(my_playground, current_field, row, col));
@@ -190,9 +190,9 @@ void fill_matrix(playground* my_playground) {
 	empty_matrix(my_playground);
 	// fill random values
 	srand(time(NULL));
+	int current_field;
 	for(int i=0; i < ROWS; i++) {
 		for(int j=0; j < COLUMNS; j++) {
-			field_color current_field;
 			do {
 				current_field = random_lentil();
 			} while(!check_neighbors(my_playground, current_field, i, j));

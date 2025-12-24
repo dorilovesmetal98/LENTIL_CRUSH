@@ -96,7 +96,7 @@ void deactivate_cursor(void) {
 	hide_cursor2();
 }
 
-void move_cursor(direction dir) {
+void move_cursor(int dir) {
 	// case 1: cursor 1 is active and cursor 2 not visible -> can move freely (only if not at border and no pigeon)
 	if(my_playground->cursor1visible == CURSOR_CHOICE) {
 		switch(dir) {
@@ -191,10 +191,11 @@ int enter_cursor(void) {
 		lock_cursor2();
 		return 1;
 	}
+	return 0;
 }  
 
 void swap_lentils(void) {
-	field_color temp = my_playground->matrix[my_playground->cursor1_row][my_playground->cursor1_col];
+	int temp = my_playground->matrix[my_playground->cursor1_row][my_playground->cursor1_col];
 	switch(my_playground->cursor2_pos) {
 		case UP:
 			my_playground->matrix[my_playground->cursor1_row][my_playground->cursor1_col] = my_playground->matrix[my_playground->cursor1_row-1][my_playground->cursor1_col];
@@ -217,7 +218,7 @@ void swap_lentils(void) {
 
 int update_score(void) {
 	if(temp_match->type != 0) {
-		int points;
+		int points = 0;
 		if(temp_match->type == 1) {
 			points = temp_match->end_column_index - temp_match->start_column_index + 1;
 		}

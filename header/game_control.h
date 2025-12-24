@@ -10,7 +10,7 @@ typedef struct match {
     int end_column_index;
     // 1 = row, 2 = column
     char type;
-    field_color color;
+    int color;
  } match;
 
 playground* get_playground(void);
@@ -28,7 +28,7 @@ void clear_game(void);
 void activate_cursor1(void);
 void activate_cursor2(void);
 void deactivate_cursor(void);
-void move_cursor(direction dir);
+void move_cursor(int dir);
 int enter_cursor(void);
 void swap_lentils(void);
 int update_score(void);

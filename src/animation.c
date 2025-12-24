@@ -61,17 +61,17 @@ void massive_slow_down(void) {
 }
 
 void escscreen_animated(playground* my_playground) {
-	char* temp_str = malloc(strlen(esc_rant)+2);
-	memset(temp_str, 0, strlen(esc_rant)+2);
-	for(int i=0; i < strlen(esc_rant); i++) {
-		temp_str[i] = esc_rant[i];
-		if(esc_rant[i] != ' ' && esc_rant[i] != '\n' && intro[i] != '|') {
+	char* temp_str = malloc(strlen(ESC_RANT)+2);
+	memset(temp_str, 0, strlen(ESC_RANT)+2);
+	for(size_t i=0; i < strlen(ESC_RANT); i++) {
+		temp_str[i] = ESC_RANT[i];
+		if(ESC_RANT[i] != ' ' && ESC_RANT[i] != '\n' && ESC_RANT[i] != '|') {
 			plot_startscreen(my_playground, temp_str);
 			fsleep(0.01);
 		}
 	}
 	for(int i=5; i > 0; i--) {
-		sprintf(temp_str, "%s%d", esc_rant, i);
+		sprintf(temp_str, "%s%d", ESC_RANT, i);
 		plot_startscreen(my_playground, temp_str);
 		fsleep(1);
 	}
@@ -79,11 +79,11 @@ void escscreen_animated(playground* my_playground) {
 }
 
 void startscreen_animated(playground* my_playground) {
-	char* temp_str = malloc(strlen(intro)+2);
-	memset(temp_str, 0, strlen(intro)+2);
-	for(int i=0; i < strlen(intro); i++) {
-		temp_str[i] = intro[i];
-		if(intro[i] != ' ' && intro[i] != '\n' && intro[i] != '|') {
+	char* temp_str = malloc(strlen(INTRO)+2);
+	memset(temp_str, 0, strlen(INTRO)+2);
+	for(size_t i=0; i < strlen(INTRO); i++) {
+		temp_str[i] = INTRO[i];
+		if(INTRO[i] != ' ' && INTRO[i] != '\n' && INTRO[i] != '|') {
 			plot_startscreen(my_playground, temp_str);
 			fsleep(0.008);
 		}
@@ -92,17 +92,17 @@ void startscreen_animated(playground* my_playground) {
 }
 
 void startscreen_count_animated(playground* my_playground) {
-	char* temp_str = malloc(strlen(intro_count)+2);
-	memset(temp_str, 0, strlen(intro_count)+2);
-	for(int i=0; i < strlen(intro_count); i++) {
-		temp_str[i] = intro_count[i];
-		if(intro_count[i] != ' ' && intro_count[i] != '\n' && intro[i] != '|') {
+	char* temp_str = malloc(strlen(INTRO_COUNT)+2);
+	memset(temp_str, 0, strlen(INTRO_COUNT)+2);
+	for(size_t i=0; i < strlen(INTRO_COUNT); i++) {
+		temp_str[i] = INTRO_COUNT[i];
+		if(INTRO_COUNT[i] != ' ' && INTRO_COUNT[i] != '\n' && INTRO_COUNT[i] != '|') {
 			plot_startscreen(my_playground, temp_str);
 			fsleep(0.02);
 		}
 	}
 	for(int i=3; i > 0; i--) {
-		sprintf(temp_str, "%s%d", intro_count, i);
+		sprintf(temp_str, "%s%d", INTRO_COUNT, i);
 		plot_startscreen(my_playground, temp_str);
 		fsleep(1);
 	}
@@ -110,17 +110,17 @@ void startscreen_count_animated(playground* my_playground) {
 }
 
 void startscreen_rant_animated(playground* my_playground) {
-	char* temp_str = malloc(strlen(intro_rant)+2);
-	memset(temp_str, 0,strlen(intro_rant)+2);
-	for(int i=0; i < strlen(intro_rant); i++) {
-		temp_str[i] = intro_rant[i];
-		if(intro_rant[i] != ' ' && intro_rant[i] != '\n' && intro[i] != '|') {
+	char* temp_str = malloc(strlen(INTRO_RANT)+2);
+	memset(temp_str, 0,strlen(INTRO_RANT)+2);
+	for(size_t i=0; i < strlen(INTRO_RANT); i++) {
+		temp_str[i] = INTRO_RANT[i];
+		if(INTRO_RANT[i] != ' ' && INTRO_RANT[i] != '\n' && INTRO_RANT[i] != '|') {
 			plot_startscreen(my_playground, temp_str);
 			fsleep(0.01);
 		}
 	}
 	for(int i=7; i > 0; i--) {
-		sprintf(temp_str, "%s%d", intro_rant, i);
+		sprintf(temp_str, "%s%d", INTRO_RANT, i);
 		plot_startscreen(my_playground, temp_str);
 		fsleep(1);
 	}

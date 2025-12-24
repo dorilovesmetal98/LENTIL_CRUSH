@@ -8,7 +8,7 @@ int random_bool_percent(unsigned int percentage) {
 		return 1;
 	}
 	
-	int random_number = (rand() % 100);
+	unsigned int random_number = (rand() % 100);
 	
 	if(random_number < percentage) {
 		return 1;
@@ -19,7 +19,7 @@ int random_bool_percent(unsigned int percentage) {
 }
 
 // checks if a test field value (of field (row,col)) is distinct to all neighbors
-int check_neighbors(playground* my_playground, field_color test_value, int row, int col) {
+int check_neighbors(playground* my_playground, int test_value, int row, int col) {
 	if(row < 0 || row >= ROWS || col < 0 || col >= COLUMNS) {
 		return -1;
 	}

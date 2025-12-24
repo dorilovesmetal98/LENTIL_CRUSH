@@ -43,11 +43,11 @@ void overwrite_screen(void) {
 void plot_startscreen(playground* my_playground, char* message) {
 	// ### RENDERING ###
 	// render header text
-	char* header_str = render_pixel_art(header);
+	char* header_str = render_pixel_art(HEADER);
 	// color_header text
-	char* color_header_str = color_header(header_str, header_colors);
+	char* color_header_str = color_header(header_str);
 	// add pigeons to header
-	char* full_header_str = full_header(color_header_str, my_playground);
+	char* full_header_str = full_header(color_header_str, my_playground, HEADER_WIDTH, LEFT_PIGEON_WIDTH);
 	// render start screen
 	char* startscreen_str = render_startscreen(message);
 	
@@ -70,11 +70,11 @@ void plot_game(playground* my_playground) {
 	
 	// ### RENDERING ###
 	// render header text
-	char* header_str = render_pixel_art(header);
+	char* header_str = render_pixel_art(HEADER);
 	// color_header text
-	char* color_header_str = color_header(header_str, header_colors);
+	char* color_header_str = color_header(header_str);
 	// add pigeons to header
-	char* full_header_str = full_header(color_header_str, my_playground);
+	char* full_header_str = full_header(color_header_str, my_playground, HEADER_WIDTH, LEFT_PIGEON_WIDTH);
 	// render playground
 	char* playground_str = render_playground(my_playground);
 	
@@ -174,7 +174,7 @@ void reset() {
 char keyboard_input(void) {
 	char keys[3];
 	memset(keys, 0, 3);
-	char input;
+	char input = 0;
 
 	fflush(stdin);
 	
@@ -214,9 +214,6 @@ char keyboard_input(void) {
 					break;
 			}
 		}
-	}
-	else {
-		input = 0;
 	}
 	
 	fflush(stdin);

@@ -1,57 +1,62 @@
 #ifndef _PLAYGROUND_H_
 #define _PLAYGROUND_H_
 
+// field size
 #define ROWS 6
 #define COLUMNS 6
 
+// number of chars
 #define ROW_SIZE 102
-
 #define WIDTH_HOR 11
 #define WIDTH_VER 5
 
+// field spaces
 #define SPACE_HOR 14
 #define SPACE_VER 0
 #define SPACE_SIDEBAR_HOR 8
 #define SPACE_SIDEBAR_VER 4
 
+// start screen spaces
 #define TEXT_FIELD_VER 15
 #define TEXT_FIELD_VER_ALIGN 11
 
+// default values
 #define DEFAULT_GOAL 15
-
-typedef enum direction {
-	UP = 30,
-	RIGHT = 31,
-	DOWN = 32,
-	LEFT = 33,
-	ESC = 40,
-	SNEAK_ESC = 41,
-	ENTER = 42,
-} direction;
-
-typedef enum cursor_stat {
-	CURSOR_HIDDEN = 100,
-	CURSOR_CHOICE = 101,
-	CURSOR_LOCKED = 102
-} cursor_stat;
-
 #define LENTILS_NUM 6
-typedef enum field_color {
-    CLEAR = -1,
-	EMPTY = 0,
-	DRED = 1,
-	GREEN = 2,
-	ORANGE = 3,
-	GREY = 4,
-	YELLOW = 5,
-	BRIGHTRED = 6,
-	MAGENTA = 7,
-	CYAN = 8,
-	LEFT_PIGEON = 10,
-	RIGHT_PIGEON = 11,
-	KEY = 20,
-	BLINK = 21
-} field_color;
+
+// directions and key inputs
+#define UP 30
+#define RIGHT 31
+#define DOWN 32
+#define LEFT 33
+#define ESC 40
+#define SNEAK_ESC 41
+#define ENTER 42
+
+// colors (control)
+#define CLEAR -1
+#define EMPTY 0
+#define KEY 20
+#define BLINK 21
+
+// colors (lentils)
+#define DRED 1
+#define GREEN 2
+#define ORANGE 3
+#define GREY 4
+#define YELLOW 5
+#define BRIGHTRED 6
+#define MAGENTA 7
+#define CYAN 8
+
+// colors (pigeons)
+#define LEFT_PIGEON 10
+#define RIGHT_PIGEON 11
+
+// colors (cursor)
+#define CURSOR_HIDDEN 100
+#define	CURSOR_CHOICE 101
+#define CURSOR_LOCKED 102
 
 typedef struct sidebar {
 	int score_red;
@@ -69,12 +74,12 @@ typedef struct sidebar {
 } sidebar;
 
 typedef struct playground {
-	cursor_stat cursor1visible;
-	cursor_stat cursor2visible;
+	int cursor1visible;
+	int cursor2visible;
 	int cursor1_row;
 	int cursor1_col;
-	direction cursor2_pos;
-	field_color matrix[ROWS][COLUMNS];
+	int cursor2_pos;
+	int matrix[ROWS][COLUMNS];
 	int blink_matrix[ROWS][COLUMNS];
 	int left_pigeon_onfield;
 	int right_pigeon_onfield;

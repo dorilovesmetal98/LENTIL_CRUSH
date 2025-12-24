@@ -68,7 +68,7 @@ int main() {
 		startscreen_rant_animated(my_playground);
 	}
 	else {
-		plot_startscreen(my_playground, esc_rant2);
+		plot_startscreen(my_playground, ESC_RANT2);
 		fsleep(0.6);
 		clear_game();
 		clear_screen();
@@ -129,7 +129,7 @@ int main() {
 			massive_slow_down();
 		}
 		else if(input_key == SNEAK_ESC) {
-			plot_startscreen(my_playground, esc_rant2);
+			plot_startscreen(my_playground, ESC_RANT2);
 			fsleep(0.6);
 			break;
 		}

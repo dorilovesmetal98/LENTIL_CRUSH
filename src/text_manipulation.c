@@ -9,7 +9,7 @@ void add_text(char* symbol, char* str, int* str_count) {
 }
 
 void add_char(char symbol, char* str, int* str_count) {
-	strncpy(&str[*str_count], &symbol, 1);
+	str[*str_count] = symbol;
 	*str_count = *str_count + 1;
 }
 
@@ -62,7 +62,7 @@ void add_linebreak(char* str, int* str_count) {
 	add_char('\n', str, str_count);
 }
 
-void set_color(field_color value, char* str, int* str_count) {
+void set_color(int value, char* str, int* str_count) {
 	switch (value) {
 		case EMPTY:
 			return;

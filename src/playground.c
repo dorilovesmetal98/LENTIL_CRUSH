@@ -73,7 +73,7 @@ void clear_playground(playground* my_playground) {
 	free(my_playground->bottom_message);
 }
 
-void render_sidebar_block(char* small_lentil, field_color color, int score, int goal, char* str, int* str_count) {
+void render_sidebar_block(char* small_lentil, int color, int score, int goal, char* str, int* str_count) {
 	int i = 0;
 	while(small_lentil[i] != '\0') {
 		for(int s=0; s < SPACE_SIDEBAR_HOR; s++) {
@@ -160,8 +160,8 @@ char* render_playground(playground* my_playground) {
 	char* lentil = render_pixel_art(LENTIL);
 	
 	// render pigeons
-	char* left_pigeon_str = render_pixel_art(left_pigeon);
-	char* right_pigeon_str = render_pixel_art(right_pigeon);
+	char* left_pigeon_str = render_pixel_art(LEFT_PIGEON_GRAPHIC);
+	char* right_pigeon_str = render_pixel_art(RIGHT_PIGEON_GRAPHIC);
 	
 	// render sidebar
 	char* sidebar_str = render_sidebar(my_playground->my_sidebar);
@@ -348,7 +348,7 @@ char* render_playground(playground* my_playground) {
 	add_text(ARROW_ENTER, output_str, &output_str_count);
 	add_text(" ", output_str, &output_str_count);
 	set_color(CLEAR, output_str, &output_str_count);
-	add_text(" Feld auswählen     ", output_str, &output_str_count);
+	add_text(" Feld ausw√§hlen     ", output_str, &output_str_count);
 	set_color(KEY, output_str, &output_str_count);
 	add_text(" ESC ", output_str, &output_str_count);
 	set_color(CLEAR, output_str, &output_str_count);

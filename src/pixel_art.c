@@ -4,6 +4,7 @@
 #include "text_manipulation.h"
 #include "drawings.h"
 
+static int header_colors[] = {MAGENTA, CYAN};
 
 char* prepare_scetch(char* input_str) {
 	// count max line len and number of lines
@@ -202,13 +203,13 @@ char* render_pixel_art(char* input_str) {
 	return output_str;
 }
 
-char* color_header(char* header_str, field_color* colors) {
+char* color_header(char* header_str) {
 	int color_counter = 0;
 	
 	char* output_str = malloc(strlen(header_str)*3);
 	int output_str_count = 0;
 	
-	set_color(colors[color_counter], output_str, &output_str_count);
+	set_color(header_colors[color_counter], output_str, &output_str_count);
 	int i = 0;
 	while(header_str[i] != '\0') {
 		if(header_str[i] == '\n') {
@@ -216,13 +217,13 @@ char* color_header(char* header_str, field_color* colors) {
 			set_color(CLEAR, output_str, &output_str_count);
 			add_char('\n', output_str, &output_str_count);
 			if(header_str[i+1] != '\0') {
-				set_color(colors[color_counter], output_str, &output_str_count);
+				set_color(header_colors[color_counter], output_str, &output_str_count);
 			}
 			i++;
 		}
 		else if(header_str[i] == '|') {
 			color_counter++;
-			set_color(colors[color_counter], output_str, &output_str_count);
+			set_color(header_colors[color_counter], output_str, &output_str_count);
 			i++;
 		}
 		else if(header_str[i] == ' ') {
@@ -241,9 +242,9 @@ char* color_header(char* header_str, field_color* colors) {
 	return output_str;
 }
 
-char* full_header(char* color_header_str, playground* my_playground) {
-	char* left_pigeon_str = render_pixel_art(left_pigeon);
-	char* right_pigeon_str = render_pixel_art(right_pigeon);
+char* full_header(char* color_header_str, playground* my_playground, int header_width, int left_pigeon_width) {
+	char* left_pigeon_str = render_pixel_art(LEFT_PIGEON_GRAPHIC);
+	char* right_pigeon_str = render_pixel_art(RIGHT_PIGEON_GRAPHIC);
 	
 	char* output_str = malloc(2*(strlen(left_pigeon_str)+strlen(right_pigeon_str)+strlen(color_header_str)));
 	int output_str_count = 0;
