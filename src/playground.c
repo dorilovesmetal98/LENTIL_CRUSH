@@ -348,7 +348,7 @@ char* render_playground(playground* my_playground) {
 	add_text(ARROW_ENTER, output_str, &output_str_count);
 	add_text(" ", output_str, &output_str_count);
 	set_color(CLEAR, output_str, &output_str_count);
-	add_text(" Feld ausw√§hlen     ", output_str, &output_str_count);
+	add_text(" Feld auswählen     ", output_str, &output_str_count);
 	set_color(KEY, output_str, &output_str_count);
 	add_text(" ESC ", output_str, &output_str_count);
 	set_color(CLEAR, output_str, &output_str_count);
