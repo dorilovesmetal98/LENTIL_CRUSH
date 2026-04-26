@@ -110,7 +110,7 @@ char keyboard_input(void) {
 		}
 	}
 
-	if (key1 == 13) {
+	if (key1 == 13 || key1 == ' ') {
 		input = ENTER;
 	}
 	else if (key1 == '+') {
@@ -185,7 +185,7 @@ char keyboard_input(void) {
 	
 	read(0, &keys, 3); 
 
-	if(keys[0] == 13) {
+	if(keys[0] == 13 || keys[0] == ' ') {
 		input = ENTER;
 	}
 	else if(keys[0] == '+') {
